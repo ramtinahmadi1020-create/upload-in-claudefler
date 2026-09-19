@@ -1,0 +1,24 @@
+{
+  "name": "upload-in-claudefler",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Minimal file uploader that gives permanent direct links. Runs on Cloudflare Workers, R2 and D1.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.45.0"
+  },
+  "cloudflare": {
+    "bindings": {
+      "BUCKET": {
+        "description": "R2 bucket that stores every uploaded file permanently."
+      },
+      "DB": {
+        "description": "D1 database that stores the list of files for each device."
+      }
+    }
+  }
+}

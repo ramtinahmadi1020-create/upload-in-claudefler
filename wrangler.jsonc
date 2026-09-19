@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "upload-in-claudefler",
+  "main": "src/worker.js",
+  "compatibility_date": "2025-09-01",
+  "workers_dev": true,
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*", "/f/*"]
+  },
+  // Resources below are created automatically on first deploy.
+  "r2_buckets": [
+    { "binding": "BUCKET", "bucket_name": "upload-in-claudefler-files" }
+  ],
+  "d1_databases": [
+    { "binding": "DB", "database_name": "upload-in-claudefler-db" }
+  ],
+  "vars": {
+    // Largest single file in gigabytes. Files are cut into parts of about 90 MB by the browser.
+    "MAX_UPLOAD_GB": "20",
+    "REPO_URL": "https://github.com/ramtinahmadi1020-create/upload-in-claudefler"
+  }
+}
