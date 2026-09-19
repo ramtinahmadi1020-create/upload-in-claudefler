@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Upload in Claudefler</title>
+  <meta name="description" content="Upload a file and get a permanent direct link.">
+  <meta name="theme-color" content="#1e1e1e">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M4 14.9A7 7 0 1 1 15.7 8h1.8a4.5 4.5 0 0 1 2.5 8.2"/><path d="M12 12v9"/><path d="m16 16-4-4-4 4"/></symbol>
+      <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></symbol>
+      <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></symbol>
+      <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+      <symbol id="i-open" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+      <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></symbol>
+      <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></symbol>
+      <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></symbol>
+      <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="titlebar">
+    <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="title" data-i18n="title">Upload in Claudefler</span>
+  </div>
+
+  <div class="lang" id="lang" role="group" aria-label="Language">
+    <span class="thumb"></span>
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="fa">FA</button>
+  </div>
+
+  <main class="page">
+    <section id="view-upload" class="view active" aria-labelledby="t-upload">
+      <div class="stage" id="drop">
+        <div class="orb" aria-hidden="true">
+          <span class="ring r1"></span><span class="ring r2"></span>
+          <svg class="i"><use href="#i-cloud"/></svg>
+        </div>
+
+        <h1 id="t-upload" data-i18n="headline">Upload a file, get a link that stays</h1>
+        <p class="sub" data-i18n="sub">Your file is stored on Cloudflare and the direct link never expires.</p>
+
+        <input type="file" id="file" hidden>
+
+        <div class="actions" id="pickBox">
+          <button type="button" class="btn primary big" id="pick">
+            <svg class="i"><use href="#i-file"/></svg>
+            <span data-i18n="choose">Choose file</span>
+          </button>
+        </div>
+
+        <div class="chosen" id="chosen" hidden>
+          <div class="chosen-info">
+            <svg class="i"><use href="#i-file"/></svg>
+            <div class="chosen-text">
+              <strong id="chosenName" dir="auto"></strong>
+              <span id="chosenSize"></span>
+            </div>
+            <button type="button" class="icon-btn" id="clear" data-i18n-label="remove" aria-label="Remove"><svg class="i"><use href="#i-x"/></svg></button>
+          </div>
+          <button type="button" class="btn primary big" id="send">
+            <svg class="i"><use href="#i-upload"/></svg>
+            <span data-i18n="upload">Upload</span>
+          </button>
+        </div>
+
+        <p class="limit" id="limit"><svg class="i"><use href="#i-info"/></svg><span id="limitText"></span></p>
+
+        <div class="progress-box" id="progress" hidden>
+          <div class="progress">
+            <div class="bar"><i id="bar"></i></div>
+            <span id="pct">0%</span>
+          </div>
+          <p class="detail" id="detail"></p>
+        </div>
+
+        <p class="error" id="error" role="alert" hidden>
+          <svg class="i"><use href="#i-alert"/></svg><span id="errorText"></span>
+        </p>
+
+        <div class="result" id="result" hidden>
+          <div class="result-title"><span class="tick"><svg class="i"><use href="#i-check"/></svg></span><span data-i18n="done">Uploaded. Your direct link:</span></div>
+          <div class="linkrow">
+            <a id="resultLink" class="link" target="_blank" rel="noopener" dir="ltr"></a>
+            <button type="button" class="icon-btn" id="resultCopy" data-i18n-label="copy" aria-label="Copy"><svg class="i"><use href="#i-copy"/></svg></button>
+          </div>
+          <button type="button" class="btn ghost" id="another">
+            <svg class="i"><use href="#i-upload"/></svg><span data-i18n="another">Upload another file</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-links" class="view" aria-labelledby="t-links">
+      <div class="stage list-stage">
+        <h2 id="t-links" data-i18n="linksTitle">Your links</h2>
+        <p class="sub" data-i18n="linksSub">Every file uploaded from this device.</p>
+        <ul class="files" id="files"></ul>
+        <div class="empty" id="empty" hidden>
+          <svg class="i"><use href="#i-inbox"/></svg>
+          <p data-i18n="empty">No files yet. Upload one and its link appears here.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <a id="deploy" class="btn ghost small" href="https://deploy.workers.cloudflare.com/" target="_blank" rel="noopener">
+        <svg class="i"><use href="#i-rocket"/></svg><span data-i18n="deploy">Deploy to Cloudflare</span>
+      </a>
+      <p data-i18n="deployHint">Get your own copy of this site in one click.</p>
+    </footer>
+  </main>
+
+  <nav class="dock" role="tablist" aria-label="Sections">
+    <span class="dock-thumb"></span>
+    <button type="button" role="tab" id="tab-upload" data-view="upload" aria-selected="true">
+      <svg class="i"><use href="#i-upload"/></svg><span data-i18n="tabUpload">Upload</span>
+    </button>
+    <button type="button" role="tab" id="tab-links" data-view="links" aria-selected="false">
+      <svg class="i"><use href="#i-list"/></svg><span data-i18n="tabLinks">Links</span><b class="count" id="count" hidden></b>
+    </button>
+  </nav>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
